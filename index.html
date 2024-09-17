@@ -15,7 +15,7 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   <link rel="stylesheet" href="./s2/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-  <title>StableVC: Flexible Stylistic Voice Conversion in Latent Space Driven by Natural Language Prompts</title>
+  <title>GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling</title>
   <style type="text/css">
     table {
       width: 100%;
@@ -265,11 +265,11 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         <div class="row align-items-center">
           <div class="col-md-12">
             <h1><a class="text-light">
-              StableVC: Flexible Stylistic Voice Conversion in Latent Space Driven by Natural Language Prompts</a></h1>
+              GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling</a></h1>
             <p>
             </p>
             <div class="row">
-              <div class="col-md col-sm-12"><a class="text-light">Anonymous Submission of AAAI 2024</a> </div>
+              <div class="col-md col-sm-12"><a class="text-light">Anonymous Submission of ICLR 2025</a> </div>
             </div>
 
 
@@ -284,7 +284,7 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     <div class="container">
       <div class="row" id="intro">
         <div class="col">
-          <p>This page shows the samples in the paper "<b>StableVC: Flexible Stylistic Voice Conversion in Latent Space Driven by Natural Language Prompts</b>".
+          <p>This page shows the samples in the paper "<b>GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling</b>".
           <h2>Abstract</h2>
           <div style="text-align: justify;">
             Style voice conversion aims to transform the style of source speech to a desired style according to real-world application demands. However, the current style voice conversion approach relies on pre-defined labels or reference speech to control the conversion process, which leads to limitations in style diversity or falls short in terms of the intuitive and interpretability of style representation. In this study, we propose PromptVC, a novel style voice conversion approach that employs a latent diffusion model to generate a style vector driven by natural language prompts. Specifically, the style vector is extracted by a style encoder during training, and then the latent diffusion model is trained independently to sample the style vector from noise, with this process being conditioned on natural language prompts. To improve style expressiveness, we leverage HuBERT to extract discrete tokens and replace them with the K-Means center embedding to serve as the linguistic content, which minimizes residual style information. Additionally, we deduplicate the same discrete token and employ a differentiable duration predictor to re-predict the duration of each token, which can adapt the duration of the same linguistic content to different styles. The subjective and objective evaluation results demonstrate the effectiveness of our proposed system.
