@@ -268,6 +268,11 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
               GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling</a></h1>
             <p>
             </p>
+            <div>
+              <a href="#"><img src="https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg"></a>
+              <a href="#"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Checkpoints-yellow"></a>
+              <a href="https://anonymous.4open.science/r/gen-se-C683"><img src="https://img.shields.io/badge/Code-GenSE-blue?logo=github"></a>
+          </div>
             <div class="row">
               <div class="col-md col-sm-12"><a class="text-light">Anonymous Submission of ICLR 2025</a> </div>
             </div>
@@ -287,7 +292,7 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
           <p>This page shows the samples in the paper "<b>GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling</b>".
           <h2>Abstract</h2>
           <div style="text-align: justify;">
-            Style voice conversion aims to transform the style of source speech to a desired style according to real-world application demands. However, the current style voice conversion approach relies on pre-defined labels or reference speech to control the conversion process, which leads to limitations in style diversity or falls short in terms of the intuitive and interpretability of style representation. In this study, we propose PromptVC, a novel style voice conversion approach that employs a latent diffusion model to generate a style vector driven by natural language prompts. Specifically, the style vector is extracted by a style encoder during training, and then the latent diffusion model is trained independently to sample the style vector from noise, with this process being conditioned on natural language prompts. To improve style expressiveness, we leverage HuBERT to extract discrete tokens and replace them with the K-Means center embedding to serve as the linguistic content, which minimizes residual style information. Additionally, we deduplicate the same discrete token and employ a differentiable duration predictor to re-predict the duration of each token, which can adapt the duration of the same linguistic content to different styles. The subjective and objective evaluation results demonstrate the effectiveness of our proposed system.
+            With the great success of the GPT family in natural language processing, there is a rapidly growing interest in applying language models to the speech field. Speech enhancement can be viewed as a speech-to-speech generation process, and many generative approaches have shown impressive performance in this domain. However, the full potential of emerging language models and the discrete representations used for language model prediction remain underexplored in speech enhancement. In this study, we propose GenSE, a comprehensive framework tailored for language model-based speech enhancement. Specifically, we tokenize speech signals by designing a simple neural codec with a single quantizer to compress the speech signal into a minimal number of acoustic tokens, and we employ a pre-trained self-supervised model to extract semantic tokens. To improve the stability of language model predictions, we propose a hierarchical modeling method that decouples the generation of clean semantic tokens and clean acoustic tokens into two stages. Additionally, we introduce a token chain prompting mechanism in the acoustic token generation phase to ensure timbre consistency throughout the enhancement process. Experimental results on benchmark datasets demonstrate that our proposed approach surpasses state-of-the-art speech enhancement systems in both accuracy and generalization. 
             </p>
           </div>
         </div>
@@ -295,7 +300,7 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
       <hr>
       <div class="row" id="intro">
         <div class="col">
-          <h2>Proposed Approach</h2>
+          <h2>GenSE Framework</h2>
           <div>
             <img src="./audios/model.drawio.png" width="100%">
             The details of our proposed approach. Subfigure (a) is the architecture of PromptVC. The solid line indicates the training stage while the dashed line represents the inference stage. Subfigures (b) and (c) illustrate the process of linguistic unit extraction and the training procedure of the latent diffusion model, respectively.
@@ -308,278 +313,207 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 
 
 
-      <h3>1: Zero-shot Voice Conversion</h3>
+      <h3>1: Speech Enhancement for DNS test set</h3>
       <div class="big-screen">
         <table class="table">
           <thead>
             <tr>
-              <th scope="row">No</th>
-              <th style="text-align: center">Source</th>
-              <th style="text-align: center">Target</th>
-              <th style="text-align: center">StyleVC</th>
-              <th style="text-align: center">SEFVC</th>
-              <th style="text-align: center">Valle-VC</th>
-              <th style="text-align: center">LMVC</th>
-              <th style="text-align: center">DiffVC</th>
-              <th style="text-align: center">NS2VC</th>
-              <th style="text-align: center">StableVC</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <tr>
-              <th scope="row">1</th>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                </audio>
-              </td>
-
-            </tr>
-
-            
-
-            
-          </tbody>
-        </table>
-      </div>
-
-      <h3>2: Style transfer</h3>
-        <div class="big-screen">
-          <table class="table">
-            <thead>
-              <tr>
-                <th style="text-align: center">Source</th>
-                <th style="text-align: center">Timbre Prompt</th>
-                <th style="text-align: center">Style Prompt</th>
-                <th style="text-align: center">Converted</th>
-              </tr>
-            </thead>
-            <tbody>
-  
-              <tr>
-                <th style="text-align: center">
-                  <audio style="width: 100px;" controls="" preload="none" controls="">
-                    <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                  </audio>
-                </th>
-                <th style="text-align: center">
-                  <audio style="width: 100px;" controls="" preload="none" controls="">
-                    <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                  </audio>
-                </th>
-
-                <th style="text-align: center">
-                  <audio style="width: 200px;" controls="" preload="none" controls="">
-                    <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                  </audio>
-                </th>
-                <th style="text-align: center">
-                  <audio style="width: 200px;" controls="" preload="none" controls="">
-                    <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                  </audio>
-                </th>
-              </tr>
-
-              <tr>
-                <th style="text-align: center">
-                </th>
-                <th style="text-align: center">
-                </th>
-
-                <th style="text-align: center">
-                  <audio style="width: 200px;" controls="" preload="none" controls="">
-                    <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                  </audio>
-                </th>
-                <th style="text-align: center">
-                  <audio style="width: 200px;" controls="" preload="none" controls="">
-                    <source src="./audios/zs/source/84_121550_000015_000000.wav" type="audio/wav">
-                  </audio>
-                </th>
-              </tr>
-  
-              
-  
-              
-            </tbody>
-          </table>
-        </div>
-
-      
-
-      <h3>3.1: Ablation Study</h3>
-      <div class="big-screen">
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="text-align: center">Step</th>
-              <th style="text-align: center">Sample1</th>
-              <th style="text-align: center">Sample2</th>
+              <th scope="row">noise type</th>
+              <th style="text-align: center">clean signal</th>
+              <th style="text-align: center">noisy signal</th>
+              <th style="text-align: center">enhanced signal</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="text-align: center">n=1</td>
-              <td style="text-align: center">
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/1-218_131206_000041_000000-vctk_p229.wav" type="audio/wav">
-                </audio>
+              <th scope="row">water</th>
+              <td>
+                <img src="audios/clean/125.jpg" width="300px" height="200px">
               </td>
               <td>
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/1-3482_170452_000019_000002-vctk_p232.wav" type="audio/wav">
-                </audio>
+                <img src="audios/noisy/clnsp156.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/clnsp156.jpg" width="300px" height="200px">
               </td>
             </tr>
             <tr>
-              <td style="text-align: center">n=2</td>
-              <td style="text-align: center">
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/2-218_131206_000041_000000-vctk_p229.wav" type="audio/wav">
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/clean_fileid_125.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/2-3482_170452_000019_000002-vctk_p232.wav" type="audio/wav">
-                </audio>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: center">n=5</td>
-              <td style="text-align: center">
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/5-218_131206_000041_000000-vctk_p229.wav" type="audio/wav">
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/clnsp156_water_320289_2_snr3_tl-19_fileid_125.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/5-3482_170452_000019_000002-vctk_p232.wav" type="audio/wav">
-                </audio>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: center">n=10</td>
-              <td style="text-align: center">
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/10-218_131206_000041_000000-vctk_p229.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/step/10-3482_170452_000019_000002-vctk_p232.wav" type="audio/wav">
-                </audio>
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-      <h3>3.2: Ablation Study</h3>
-      <div class="big-screen">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>Source Speech</td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/ablation/source.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>Timbre Prompt</td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/ablation/vctk_p228.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>Style Prompt</td>
-              <td>
-                <audio style="width: 100px;" controls="" preload="none" controls="">
-                  <source src="./audios/ablation/0019_001413.wav" type="audio/wav">
-                </audio>
-              </td>
-
-            </tr>
-          </tbody>
-        </table>
-
-        <table class="table">
-          <tbody>
-
-            <tr>
-              <td>
-                Orig.
-              </td>
-              <td>
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/ablation/orig.wav" type="audio/wav">
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/clnsp156_water_320289_2_snr3_tl-19_fileid_125.wav.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
 
             <tr>
+              <th scope="row">traffic</th>
               <td>
-                Var timbre concat.
+                <img src="audios/clean/88.jpg" width="300px" height="200px">
               </td>
               <td>
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/ablation/timbre_v.wav" type="audio/wav">
+                <img src="audios/noisy/clnsp16.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/clnsp16.jpg" width="300px" height="200px">
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/clean_fileid_88.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/clnsp16_traffic_248091_1_snr11_tl-22_fileid_88.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/clnsp16_traffic_248091_1_snr11_tl-22_fileid_88.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
 
             <tr>
+              <th scope="row">vacuum</th>
               <td>
-                Var style concat.
+                <img src="audios/clean/192.jpg" width="300px" height="200px">
               </td>
               <td>
-                <audio style="width: 400px;" controls="" preload="none" controls="">
-                  <source src="./audios/ablation/style_v.wav" type="audio/wav">
+                <img src="audios/noisy/clnsp186.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/clnsp186.jpg" width="300px" height="200px">
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/clean_fileid_192.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/clnsp186_vacuum_353640_3_snr1_tl-27_fileid_192.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/clnsp186_vacuum_353640_3_snr1_tl-27_fileid_192.wav" type="audio/wav">
+                </audio>
+              </td>
+            </tr>
+            
+            <tr>
+              <th scope="row">accompaniment</th>
+              <td>
+                <img src="audios/clean/296.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/noisy/clnsp27.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/clnsp27.jpg" width="300px" height="200px">
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/clean_fileid_296.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/clnsp27_GvaTLOWuCK8_snr10_tl-22_fileid_296.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/clnsp27_GvaTLOWuCK8_snr10_tl-22_fileid_296.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
 
+            <tr>
+              <th scope="row">bus</th>
+              <td>
+                <img src="audios/clean/300.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/noisy/clnsp57.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/clnsp57.jpg" width="300px" height="200px">
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/clean_fileid_300.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/clnsp57_bus_84241_3_snr2_tl-30_fileid_300.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/clnsp57_bus_84241_3_snr2_tl-30_fileid_300.wav" type="audio/wav">
+                </audio>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">street</th>
+              <td>
+                <img src="audios/clean/58.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/noisy/clnsp149.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/clnsp149.jpg" width="300px" height="200px">
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/clean_fileid_58.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/clnsp149_SjEWn2DhLDs_snr0_tl-23_fileid_58.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/clnsp149_SjEWn2DhLDs_snr0_tl-23_fileid_58.wav" type="audio/wav">
+                </audio>
+              </td>
+            </tr>
             
 
             
@@ -587,12 +521,8 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         </table>
       </div>
 
+      <h3>2: Speech Enhancement for CHiME4 test set</h3>
 
-
-
-      <hr>
-
-      <hr>
 
     </div>
   </main>
@@ -601,7 +531,7 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     <div class="container">
       <p class="text-center">
         <small>
-          PromptVC: Flexible Stylistic Voice Conversion in Latent Space Driven by Natural Language Prompts
+          GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling
           <br>
           <a class="text-light"><strong>Anonymous</strong></a> |
           Anonymous email
