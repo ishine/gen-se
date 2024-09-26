@@ -269,8 +269,8 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
             <p>
             </p>
             <div>
-              <a href="#"><img src="https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg"></a>
-              <a href="#"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Checkpoints-yellow"></a>
+              <!-- <a href="#"><img src="https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg"></a> -->
+              <!-- <a href="#"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Checkpoints-yellow"></a> -->
               <a href="https://anonymous.4open.science/r/gen-se-C683"><img src="https://img.shields.io/badge/Code-GenSE-blue?logo=github"></a>
           </div>
             <div class="row">
@@ -292,7 +292,8 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
           <p>This page shows the samples in the paper "<b>GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling</b>".
           <h2>Abstract</h2>
           <div style="text-align: justify;">
-            With the great success of the GPT family in natural language processing, there is a rapidly growing interest in applying language models to the speech field. Speech enhancement can be viewed as a speech-to-speech generation process, and many generative approaches have shown impressive performance in this domain. However, the full potential of emerging language models and the discrete representations used for language model prediction remain underexplored in speech enhancement. In this study, we propose GenSE, a comprehensive framework tailored for language model-based speech enhancement. Specifically, we tokenize speech signals by designing a simple neural codec with a single quantizer to compress the speech signal into a minimal number of acoustic tokens, and we employ a pre-trained self-supervised model to extract semantic tokens. To improve the stability of language model predictions, we propose a hierarchical modeling method that decouples the generation of clean semantic tokens and clean acoustic tokens into two stages. Additionally, we introduce a token chain prompting mechanism in the acoustic token generation phase to ensure timbre consistency throughout the enhancement process. Experimental results on benchmark datasets demonstrate that our proposed approach surpasses state-of-the-art speech enhancement systems in both accuracy and generalization. 
+            Speech enhancement (SE) aims to improve the quality and intelligibility of speech in the presence of various noises. However, current SE approaches often overlook the rich semantic information embedded in speech, which can provide critical information for enhancing intelligibility, speaker consistency, and overall quality. In this study, we employ language models as efficient semantic learners and propose a comprehensive framework tailored for language model-based speech enhancement, called GenSE. 
+Specifically, we tokenize speech signals by designing a simple neural codec with a single quantizer to compress the speech signal into a minimal number of acoustic tokens, and we employ a pre-trained self-supervised model to extract semantic tokens. We regard SE as a conditional language modeling task rather than continuous signal regression as in previous work. To improve the stability of language model predictions, we propose a hierarchical modeling method that decouples the generation of clean semantic tokens and clean acoustic tokens into two distinct stages. Moreover, we introduce a token chain prompting mechanism during the acoustic token generation stage to ensure timbre consistency throughout the enhancement process. Experimental results on benchmark datasets demonstrate that our proposed approach surpasses state-of-the-art speech enhancement systems in both accuracy and generalization. Codes and demos are publicly available at https://anonymous.4open.science/w/gen-se-7F52/.
             </p>
           </div>
         </div>
@@ -302,16 +303,12 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         <div class="col">
           <h2>GenSE Framework</h2>
           <div>
-            <img src="./audios/model.drawio.png" width="100%">
-            The details of our proposed approach. Subfigure (a) is the architecture of PromptVC. The solid line indicates the training stage while the dashed line represents the inference stage. Subfigures (b) and (c) illustrate the process of linguistic unit extraction and the training procedure of the latent diffusion model, respectively.
+            <img src="./audios/language_model.png" width="100%">
+            The hierarchical modeling framework of language model in GenSE.
           </div>
         </div>
       </div>
       <hr>
-
-
-
-
 
       <h3>1: Speech Enhancement for DNS test set</h3>
       <div class="big-screen">
@@ -522,7 +519,82 @@ jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
       </div>
 
       <h3>2: Speech Enhancement for CHiME4 test set</h3>
+      <div class="big-screen">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="row">noise type</th>
+              <th style="text-align: center">clean signal</th>
+              <th style="text-align: center">noisy signal</th>
+              <th style="text-align: center">enhanced signal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">caffe</th>
+              <td>
+                <img src="audios/clean/F01.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/noisy/F01.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/F01.jpg" width="300px" height="200px">
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/F01_22GC0106_CAF.CH1_clean.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/F01_22GC0106_CAF.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/F01_22GC0106_CAF.wav" type="audio/wav">
+                </audio>
+              </td>
+            </tr>
 
+            <tr>
+              <th scope="row">bus</th>
+              <td>
+                <img src="audios/clean/M03.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/noisy/M03.jpg" width="300px" height="200px">
+              </td>
+              <td>
+                <img src="audios/enhance/M03.jpg" width="300px" height="200px">
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">audio</th>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/clean/M03_050C0108_BUS.CH1_clean.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/noisy/M03_050C0108_BUS.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio style="width: 300px;" controls="" preload="none" controls="">
+                  <source src="./audios/enhance/M03_050C0108_BUS.wav" type="audio/wav">
+                </audio>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
 
     </div>
   </main>
