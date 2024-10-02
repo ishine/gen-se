@@ -1,0 +1,18 @@
+path:
+  n2s_ckpt_path: ckpts/n2s_xlsr.ckpt
+  s2s_ckpt_path: ckpts/s2s_xlsr.ckpt
+  codec_config_path: ckpts/config.json
+
+model:
+  hidden_size: 1024
+  # intermediate_size: 2048
+  num_hidden_layers: 12
+  num_attention_heads: 8
+  n2s_vocab_size: 1027  #1024 + 1+1+1
+  s2s_vocab_size: 9219  #8192 + 1024 + 1+1+1
+  semantic_num: 1024
+
+ssl_model:
+  ckpt_path: ckpts/xlsr2_300m.pt
+  km_path: ckpts/xlsr_km.mdl
+  type: xlsr
