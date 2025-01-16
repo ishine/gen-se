@@ -19,6 +19,12 @@ class SimCodec(nn.Module):
         self.encoder = Encoder(self.h)
         self.quantizer = Quantizer(self.h)
         self.generator = Generator(self.h)
+    
+    def load_ckpt(self, ckpt_path):
+        ckpt = torch.load(ckpt_path,map_location='cpu')
+        self.encoder.load_state_dict(ckpt['encoder'])
+        self.quantizer.load_state_dict(ckpt['quantizer'])
+        self.generator.load_state_dict(ckpt['generator'])
 
     def forward(self, x):
         batch_size = x.size(0)
