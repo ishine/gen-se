@@ -10,7 +10,7 @@ GenSE employs a hierarchical modeling framework with a two-stage process: a N2S 
 
 ## TODO 📝
 - [x] Release Inference pipeline
-- [ ] Release pretrained model
+- [x] Release pretrained model
 - [ ] Support in colab
 - [ ] More to be added
 
@@ -25,15 +25,31 @@ pip install -r requirements.txt
 ```
 
 ### 2. Get Self-supervised Model:
-Download [XLSR model](https://huggingface.co/facebook/wav2vec2-xls-r-300m)  and move it to ckpts dir.
+Download [XLSR model](https://huggingface.co/facebook/wav2vec2-xls-r-300m)  and move it to ckpts dir.  
+or  
+Download [WavLM Large](https://huggingface.co/microsoft/wavlm-large) run a variant of XLSR version.
 
 ### 3. Pre-trained Model:
-We will release pre-trained model soon.
+Download pre-trained model from [huggingface](https://huggingface.co/yaoxunji/gense), all checkpoints should be stored in ckpts dir.
 
-### 4. Inference:
+### 4. Speech Enhancement:
 ```
 python infer.py run \
   --noisy_path noisy.wav 
   --out_path ./enhanced.wav 
   --config_path configs/gense.yaml
+```
+### 5. SimCodec Copy-syn:
+```
+from components.simcodec.model import SimCodec
+codec = SimCodec('config.json')
+codec.load_ckpt('g_00100000')
+codec = codec.eval()
+codec = codec.to('cuda')
+
+code = codec(wav)
+print(code.shape) #[B, L1, 1]
+syn = codec.decode(code)
+print(syn.shape) #[B, 1, L2]
+torchaudio.save('copy.wav', syn.detach().cpu().squeeze(0), 16000)
 ```
