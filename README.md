@@ -1,4 +1,4 @@
-# GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling <br> <sub>The official implementation of GenSE submitted to ICLR 2025 </sub>
+# GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling <br> <sub>The official implementation of GenSE accepted by ICLR 2025 </sub>
 
 We propose a comprehensive framework tailored for language model-based speech enhancement, called GenSE. Speech enhancement is regarded as a conditional language modeling task rather than a continuous signal regression problem defined in existing works. This is achieved by tokenizing speech signals into semantic tokens using a pre-trained self-supervised model and into acoustic tokens using a custom-designed single-quantizer neural codec model. 
 
@@ -10,7 +10,7 @@ GenSE employs a hierarchical modeling framework with a two-stage process: a N2S 
 
 ## TODO 📝
 - [x] Release Inference pipeline
-- [x] Release pretrained model
+- [ ] Release pretrained model
 - [ ] Support in colab
 - [ ] More to be added
 
@@ -30,7 +30,8 @@ or
 Download [WavLM Large](https://huggingface.co/microsoft/wavlm-large) run a variant of XLSR version.
 
 ### 3. Pre-trained Model:
-Download pre-trained model from [huggingface](https://huggingface.co/yaoxunji/gense), all checkpoints should be stored in ckpts dir.
+The huggingface repo will coming soon!
+Download pre-trained model from huggingface, all checkpoints should be stored in ckpts dir.
 
 ### 4. Speech Enhancement:
 ```
@@ -53,3 +54,15 @@ syn = codec.decode(code)
 print(syn.shape) #[B, 1, L2]
 torchaudio.save('copy.wav', syn.detach().cpu().squeeze(0), 16000)
 ```
+
+<!-- ## Acknowledgement -->
+
+<!-- ## Citation
+```bibtex
+@inproceedings{Yao2025,
+  title={GenSE},
+  author={Jixun Yao},
+  year={2025},
+  booktitle={2025 arxiv},
+}
+``` -->
