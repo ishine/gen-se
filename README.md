@@ -1,4 +1,4 @@
-# GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling <br> <sub>The official implementation of GenSE accepted by ICLR 2025 </sub>
+# GenSE: Generative Speech Enhancement via Language Models using Hierarchical Modeling <br> <sub>The official implementation of GenSE (ICLR 2025) </sub>
 
 We propose a comprehensive framework tailored for language model-based speech enhancement, called GenSE. Speech enhancement is regarded as a conditional language modeling task rather than a continuous signal regression problem defined in existing works. This is achieved by tokenizing speech signals into semantic tokens using a pre-trained self-supervised model and into acoustic tokens using a custom-designed single-quantizer neural codec model. 
 
