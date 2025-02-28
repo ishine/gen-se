@@ -10,7 +10,7 @@ GenSE employs a hierarchical modeling framework with a two-stage process: a N2S 
 
 ## TODO 📝
 - [x] Release Inference pipeline
-- [ ] Release pretrained model
+- [x] Release pre-trained model
 - [ ] Support in colab
 - [ ] More to be added
 
