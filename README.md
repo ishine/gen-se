@@ -30,8 +30,7 @@ or
 Download [WavLM Large](https://huggingface.co/microsoft/wavlm-large) run a variant of XLSR version.
 
 ### 3. Pre-trained Model:
-The huggingface repo will coming soon!
-Download pre-trained model from huggingface, all checkpoints should be stored in ckpts dir.
+Download pre-trained model from [huggingface](https://huggingface.co/yaoxunji/gen-se/tree/main), all checkpoints should be stored in ckpts dir.
 
 ### 4. Speech Enhancement:
 ```
